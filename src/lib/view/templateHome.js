@@ -1,4 +1,4 @@
-import { loginGoogle, signUp } from '../index.js';
+import { loginGoogle, signUp, signIn, logOut } from '../index.js';
 
 export const home = () => {
   /* Creamos un DIV que contenga lo que creamos */
@@ -33,5 +33,17 @@ export const home = () => {
     const password = pass.value;
     signUp(email, password);
   });
+
+  /* Añade evento a btnLogin */
+  btnLogin.addEventListener('click', () => {
+    const email = mail.value;
+    const password = pass.value;
+    signIn(email, password);
+  });
+
+  btnLogout.addEventListener('click', () => {
+    logOut();
+  });
+
   return divHome;
 };

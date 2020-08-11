@@ -58,3 +58,34 @@ export const signUp = (email, password) => {
     // [END_EXCLUDE]
     });
 };
+
+/* Log In con correo y password */
+export const signIn = (email, password) => {
+  console.log(email, password);
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      alert('Bienvenido a Wit!');
+      console.log('Iniciaste sesión exitosamente');
+    })
+    .catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // [START_EXCLUDE]
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      document.getElementById('quickstart-sign-in').disabled = false;
+    // [END_EXCLUDE]
+    });
+};
+
+/* Log out /Cerrar Sesión */
+
+export const logOut = () => {
+  firebase.auth().signOut();
+  console.log ('Cerraste sesión');
+};
