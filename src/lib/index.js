@@ -33,10 +33,16 @@ export const loginGoogle = () => {
 
 /* Sign Up con correo y password */
 export const signUp = (email, password) => {
-  console.log(email,password);
+  console.log(email, password);
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
       console.log('creaste tu cuenta exitosamente');
+      firebase.auth().currentUser.sendEmailVerification().then(() => {
+        // Email Verification sent!
+        // [START_EXCLUDE]
+        alert('Email Verification Sent!');
+        // [END_EXCLUDE]
+      });
     })
     .catch((error) => {
     // Handle Errors here.
