@@ -5,9 +5,10 @@ export const myFunction = () => {
   console.log('Hola mundo!');
 };
 
+const provider = new firebase.auth.GoogleAuthProvider();
+
 /* Log In con Google */
-export const login = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
+export const loginGoogle = () => {
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -27,5 +28,27 @@ export const login = () => {
       const credential = error.credential;
       console.log('error', errorMessage);
     // ...
+    });
+};
+
+/* Sign Up con correo y password */
+export const signUp = (email, password) => {
+  console.log(email,password);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      console.log('creaste tu cuenta exitosamente');
+    })
+    .catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // [START_EXCLUDE]
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    // [END_EXCLUDE]
     });
 };
