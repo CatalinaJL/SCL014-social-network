@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 import { myFunction } from './lib/index.js';
+<<<<<<< HEAD
 import { menu } from './lib/view/templateMenu.js';
 import { changeRoute } from './lib/router.js';
 // import { home } from './lib/view/templateHome.js';
@@ -23,4 +24,19 @@ const init = () => {
   });
 };
 
+=======
+// import { logIn } from './lib/controllers/firebasecontroller.js';
+import { welcome } from './lib/view/WelcomeTemplate.js';
+import { changeRoute } from './lib/router.js';
+
+const init = () => {
+ document.getElementById('root').appendChild(welcome());
+  window.addEventListener('hashchange', () => {
+    myFunction();
+    // eslint-disable-next-line no-console
+    console.log(window.location.hash);
+    changeRoute(window.location.hash);
+  });
+};
+>>>>>>> 7506efe2f85522096abf8fa64464465a3380f29b
 window.addEventListener('load', init);
