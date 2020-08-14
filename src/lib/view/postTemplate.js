@@ -1,26 +1,31 @@
 /* Aqui van los post de los usuarios */
 export const post = () => {
   const viewPost = `
-    <header>
-        <input type="image" src="images/witLogo.png">
-        <input type="search" placeholder="Buscar">
-    </header>
-    <div class="container">
-        <input type="image" src="images/icons/userPhoto.png">
-        <input type="image" src="images/icons/iconHandJob.png" value="job" id="job"> /*Btn opcion Trabajo*/
-        <input type="image" src="images/icons/iconHandLaptop.png" value="courses" id="courses"> /* Btn opcion Talleres/Webinar*/
-        <textarea name="texto" rows="4" cols="40" placeholder="Escribe tú publicación"></textarea>
-        <input type="submit" value="Publicar" id="post">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#/home"><img src="images/icons/iconHome.png" alt=""></a>Home</li>
-            <li><a href="#/jobs"><img src="images/icons/iconBriefcase2.png" alt=""></a>Trabajo</li>
-            <li><a href="#/post"><img src="images/icons/iconPlus.png" alt="">Post</a></li>
-            <li><a href="#/courses"><img src="images/icons/iconLaptop1.png" alt="">Talleres</a></li>
-            <li><a href="#/notifications"><img src="images/icons/iconBell2.png" alt="">Notificaciones</a></li>
-        </ul>
-    </nav>
+  <!--Header, que contiene el logo y el buscador -->
+  <header>
+      <!--Div que contiene el logo-->
+      <div id="logoContainer">
+          <input id="logo1" type="image" src="../imagenes/witLogo1.png">
+      </div>
+      <!--Div que contiene el buscador-->
+      <div class="search">
+          <input id="search" type="search" placeholder="Buscar">
+      </div>
+      <nav>
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/post">Post</a></li>
+          <li><a href="#/"></a>Nada</li>
+     </nav>
+  </header>
+  <section class= "posts">
+      <!--Div que contiene el post ya publicado-->
+      <div class="verPost">
+          <input id="job" type="image" src="../imagenes/iconos/iconHandJob.png" value="job">
+          <div class = "containerpost">
+              <h3>Hola Hola, ratón con cola! </h3>
+          </div>
+      </div>
+  </section>
   `;
   return viewPost;
 };
