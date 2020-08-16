@@ -5,6 +5,9 @@ export const myFunction = () => {
   console.log('Hola mundo!');
 };
 
+/* Agregamos funcion de firestore, db será el database en que vamos a guardar información */
+const db = firebase.firestore();
+
 /* Inicio Sesión con Google */
 
 export const loginGoogle = () => {
@@ -80,4 +83,12 @@ export const loginMailPass = (email, password) => {
       document.getElementById('quickstart-sign-in').disabled = false;
     // [END_EXCLUDE]
     });
+};
+
+/* Para agregar información a colección de firestore/database */
+export const response = () =>{
+  db.collection('tasks').doc().set({
+
+  });
+  console.log();
 };
