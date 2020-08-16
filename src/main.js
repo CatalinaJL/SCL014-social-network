@@ -2,7 +2,7 @@
 
 import { myFunction } from './lib/index.js';
 import { menu } from './lib/view/templateMenu.js';
-import { home } from './lib/view/templateHome.js';
+// import { home } from './lib/view/templateHome.js';
 import { changeRoute } from './lib/router.js';
 
 myFunction();
@@ -27,7 +27,7 @@ const init = () => {
     console.log(window.location.hash);
     /* se llama a funcion changeRoute */
     changeRoute(window.location.hash);
-  })
+  });
 };
 
 /* Ahora llamamos a constante init con window */

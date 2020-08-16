@@ -7,10 +7,30 @@
   <title>Document</title>
 </head>
 <body>
-  
-
   <div id="root"></div>
+ 
   <script type="module" src="main.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDaEULbmvhs6-jToz6tnZ32lHxDO9h1n_E",
+      authDomain: "practicafirebasecjl.firebaseapp.com",
+      databaseURL: "https://practicafirebasecjl.firebaseio.com",
+      projectId: "practicafirebasecjl",
+      storageBucket: "practicafirebasecjl.appspot.com",
+      messagingSenderId: "364777647495",
+      appId: "1:364777647495:web:319a50f7c860b3ecca3722"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </body>
 </html>
 
