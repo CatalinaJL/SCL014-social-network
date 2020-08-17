@@ -5,9 +5,6 @@ export const myFunction = () => {
   console.log('Hola mundo!');
 };
 
-/* Agregamos funcion de firestore, db será el database en que vamos a guardar información */
-const db = firebase.firestore();
-
 /* Inicio Sesión con Google */
 
 export const loginGoogle = () => {
@@ -37,7 +34,7 @@ export const loginGoogle = () => {
 export const signUpMailPass = (email, password) => {
   console.log(email, password);
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(() =>{
+    .then(() => {
       /* Va a enviar un correo electrónico solicitando verificar mail */
       firebase.auth().currentUser.sendEmailVerification().then(() => {
         // Email Verification sent!
@@ -51,7 +48,7 @@ export const signUpMailPass = (email, password) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       // [START_EXCLUDE]
-      if (errorCode == 'auth/weak-password') {
+      if (errorCode === 'auth/weak-password') {
         alert('La contraseña es muy débil');
       } else {
         alert(errorMessage);
@@ -85,12 +82,39 @@ export const loginMailPass = (email, password) => {
     });
 };
 
-/* Para agregar información a colección de firestore/database */
-export const response = (post) =>{
-  db.collection('tasks').add(post);
+/* Función para postear */
+export const posteame = (input) => {
+  /* Agregamos funcion de firestore, db será el database en que vamos a guardar información */
+  const db = firebase.firestore();
+  /* Crear constante usuario para poder obtener datos asociados al authentication */
+  const usuario = () => firebase.auth().currentUser;
+  /* Se le da un nuevo valor, porque usuario no se ocupa tanto */
+  const user = usuario();
+  /* Agregar la colección y crear el objeto para subirlo */
+  db.collection('post').add({
+    /* ahora desde constante user obtengo información desde auth */
+    email: user.email,
+    nombre: user.displayName,
+    post: input,
+    uid: user.uid,
+  })
+    .then((docRef) => {
+      /* docRef hace referencia al id del documento al crear la colección. Segunda columna */
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
 };
 
-/* Para obtener informqación de colección a app */
-export const getResponse = () =>{
-  db.collection('tasks').get();
-}
+/* Función para mostrar el post */
+
+export const leeme = () => {
+  /* Agregamos funcion de firestore, db será el database en que vamos a guardar información */
+  const db = firebase.firestore();
+  db.collection('post').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().post}`);
+    });
+  });
+};
