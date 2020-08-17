@@ -86,9 +86,11 @@ export const loginMailPass = (email, password) => {
 };
 
 /* Para agregar información a colección de firestore/database */
-export const response = () =>{
-  db.collection('tasks').doc().set({
-
-  });
-  console.log();
+export const response = (post) =>{
+  db.collection('tasks').add(post);
 };
+
+/* Para obtener informqación de colección a app */
+export const getResponse = () =>{
+  db.collection('tasks').get();
+}

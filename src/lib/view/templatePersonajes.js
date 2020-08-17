@@ -1,4 +1,4 @@
-import { response } from '../index.js';
+import { response, getResponse } from '../index.js';
 
 export const personajes = () => {
   /* Se crea un Div que contenga lo que vamos a crear */
@@ -42,8 +42,19 @@ export const personajes = () => {
 
     console.log('submiting');
     console.log(title, description);
-    response(title, description);
-    console.log(response);
+    /* Se llama a función response, y se le pasan los elementos como objetos */
+    response({
+      title: title,
+      description: description,
+    });
+    /* Ahora cuando guarde los elementos, se limpie la página y se posicione cursor en title */
+    taskForm.reset();
+    taskForm.focus();
+  });
+  /* Para que muestre información de database */
+  window.addEventListener('DOMContentLoad', async (e) => {
+    const tasks = getResponse();
+    console.log(tasks);
   });
   /* Se retorna el divHome con lo que contiene ahora */
   return divPersonajes;
