@@ -115,6 +115,12 @@ export const leeme = () => {
   db.collection('post').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().post}`);
+      /* Se llama a parrafo de template personajes para mostrar info */
+      const muestrame = document.getElementById('outputPost');
+      /* Se crea HTML dinamico para mostrar información desde databse */
+      const infoPost = ` <h3> este mensaje es de : ${doc.data().nombre ? doc.data().nombre : doc.data().email} </h3>
+      <p>${doc.data().post}</p>`;
+      muestrame.innerHTML += infoPost;
     });
   });
 };

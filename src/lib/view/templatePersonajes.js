@@ -19,8 +19,7 @@ export const personajes = () => {
     const input = divPersonajes.querySelector('#inputPost').value;
     posteame(input);
   });
-  /* Para mostrar post y usar funcion leeme  */
-  const verPost = divPersonajes.querySelector('#outputPost');
-  
+  leeme();
+  /* Para mostrar post y usar funcion leeme */
   return divPersonajes;
 };
