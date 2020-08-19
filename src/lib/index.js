@@ -118,9 +118,41 @@ export const leeme = () => {
       /* Se llama a parrafo de template personajes para mostrar info */
       const muestrame = document.getElementById('outputPost');
       /* Se crea HTML dinamico para mostrar información desde databse */
-      const infoPost = ` <h3> este mensaje es de : ${doc.data().nombre ? doc.data().nombre : doc.data().email} </h3>
-      <p>${doc.data().post}</p>`;
+      const infoPost = ` 
+      <div class = "container">
+      <h3> este mensaje es de : ${doc.data().nombre ? doc.data().nombre : doc.data().email} </h3>
+      <p>${doc.data().post}</p>
+      </div>
+      <button class="edit" id= "edit">Editar</button>
+      <button class ="delete" id="delete">Borrar</button>
+      `;
       muestrame.innerHTML += infoPost;
     });
   });
 };
+
+export const deletePost = () => {
+  /* Constante de database */
+  const db = firebase.firestore();
+  /* constante de usuario con uid */
+  const user = firebase.auth().currentUser;
+  b.collection('post').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().post}`);
+      /* Se llama a parrafo de template personajes para mostrar info */
+      const muestrame = document.getElementById('outputPost');
+      /* Se crea HTML dinamico para mostrar información desde databse */
+      const infoPost = ` 
+      <div class = "container">
+      <h3> este mensaje es de : ${doc.data().nombre ? doc.data().nombre : doc.data().email} </h3>
+      <p>${doc.data().post}</p>
+      </div>
+      `;
+      muestrame.innerHTML += infoPost;
+    });
+  });
+
+   
+
+}
+     
